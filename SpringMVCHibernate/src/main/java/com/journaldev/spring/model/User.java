@@ -10,7 +10,7 @@ import javax.persistence.Table;
 /**
  * Entity bean with JPA annotations
  * Hibernate provides JPA implementation
- * @author pankaj
+ * @author balaji
  *
  */
 @Entity
@@ -27,6 +27,16 @@ public class User {
 	private String employeeId;
 	
 	private String mobileNo;
+	
+	private String eventId;
+
+	public String getEventId() {
+		return eventId;
+	}
+
+	public void setEventId(String eventId) {
+		this.eventId = eventId;
+	}
 
 	public String getMobileNo() {
 		return mobileNo;

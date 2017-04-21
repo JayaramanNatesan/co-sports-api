@@ -73,12 +73,14 @@ public class UserController {
     @RequestMapping(value = UserRestURIConstants.DUMMY_USER, method = RequestMethod.GET)
 	public @ResponseBody User getDummyUser() {
 		//logger.info("Start getDummyUser");
-		User emp = new User();
-		emp.setId(9999);
-		emp.setEmployeeName("Dummy");
+		List<User> emp = new ArrayList<User>();
+		emp = this.userService.listUsers();
+//		emp.setId(9999);
+//		emp.setEmployeeName("Dummy");
 //		emp.setCreatedDate(new Date());
-		empData.put(9999, emp);
-		return emp;
+		
+
+		return emp.get(0);
 	}
 	
 	@RequestMapping(value = UserRestURIConstants.REGISTER_USER, method = RequestMethod.POST)

@@ -19,10 +19,15 @@ public class Event implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public Event() {
+		
+	}
 	@Id  
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "event_id")  
 	private Long eventId;
+	
+
 	@Column(name = "event_name")  
 	private String eventName;
 	@Column(name = "event_venue")  

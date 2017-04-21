@@ -41,6 +41,7 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				<beans:value>com.journaldev.spring.model.User</beans:value>
+				<beans:value>com.journaldev.spring.model.Event</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -53,6 +54,9 @@
 	</beans:bean>
 	
 	<beans:bean id="userDAO" class="com.journaldev.spring.dao.UserDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="eventDAO" class="com.journaldev.spring.dao.EventDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	<beans:bean id="userService" class="com.journaldev.spring.service.UserServiceImpl">

@@ -71,11 +71,17 @@ public class UserController {
     Map<Integer, User> empData = new HashMap<Integer, User>();
     @RequestMapping(value = UserRestURIConstants.DUMMY_USER, method = RequestMethod.GET)
 	public @ResponseBody User getDummyUser() {
-		User emp = new User();
-		emp.setId(9999);
-		emp.setEmployeeName("Dummy");
-		empData.put(9999, emp);
-		return emp;
+
+		//logger.info("Start getDummyUser");
+		List<User> emp = new ArrayList<User>();
+		emp = this.userService.listUsers();
+//		emp.setId(9999);
+//		emp.setEmployeeName("Dummy");
+//		emp.setCreatedDate(new Date());
+		
+
+		return emp.get(0);
+
 	}
 	
     

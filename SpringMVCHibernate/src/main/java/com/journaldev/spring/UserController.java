@@ -1,11 +1,8 @@
 package com.journaldev.spring;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,11 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.journaldev.spring.model.User;
 import com.journaldev.spring.service.UserService;
 
@@ -72,6 +71,7 @@ public class UserController {
     Map<Integer, User> empData = new HashMap<Integer, User>();
     @RequestMapping(value = UserRestURIConstants.DUMMY_USER, method = RequestMethod.GET)
 	public @ResponseBody User getDummyUser() {
+
 		//logger.info("Start getDummyUser");
 		List<User> emp = new ArrayList<User>();
 		emp = this.userService.listUsers();
@@ -81,14 +81,16 @@ public class UserController {
 		
 
 		return emp.get(0);
+
 	}
 	
+    
 	@RequestMapping(value = UserRestURIConstants.REGISTER_USER, method = RequestMethod.POST)
-	public @ResponseBody User createUser(@RequestBody User emp) {
-		//logger.info("Start createUser.");
-//		emp.setCreatedDate(new Date());
-//		List<User> users = this.userService.listUsers();
-		empData.put(emp.getId(), emp);
+	public @ResponseBody User createUser(@PathVariable(value="eventId") String eventid, String inputData) throws JsonParseException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		User emp = mapper.readValue(inputData, User.class);
+		emp.setEventId(eventid);
+		addUser(emp);
 		return emp;
 	}
 	

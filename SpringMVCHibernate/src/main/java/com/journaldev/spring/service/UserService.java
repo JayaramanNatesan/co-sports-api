@@ -11,5 +11,5 @@ public interface UserService {
 	public List<User> listUsers();
 	public User getUserById(int id);
 	public void removeUser(int id);
-	
+	public List<User> listUsersByEventId(Integer eventId);
 }

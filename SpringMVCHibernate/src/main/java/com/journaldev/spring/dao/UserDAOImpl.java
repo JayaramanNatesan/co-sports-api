@@ -2,6 +2,7 @@ package com.journaldev.spring.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -62,6 +63,16 @@ public class UserDAOImpl implements UserDAO {
 			session.delete(p);
 		}
 		logger.info("Person deleted successfully, person details="+p);
+	}
+
+	@Override
+	public List<User> listUsersByEventId(Integer eventId) {
+		String selectParticipants = "FROM User u WHERE u.eventId = :event_id order by u.employeeName";
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery(selectParticipants);
+		query.setParameter("event_id",eventId);
+		List<User> users = query.list();
+		return users;
 	}
 
 }

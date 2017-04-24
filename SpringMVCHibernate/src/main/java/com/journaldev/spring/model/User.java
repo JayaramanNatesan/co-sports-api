@@ -22,19 +22,23 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name = "employee_name")
 	private String employeeName;
 	
+	@Column(name = "employee_id")  
 	private String employeeId;
 	
+	@Column(name = "mobile_no")
 	private String mobileNo;
 	
-	private String eventId;
+	@Column(name = "event_id")
+	private Integer eventId;
 
-	public String getEventId() {
+	public Integer getEventId() {
 		return eventId;
 	}
 
-	public void setEventId(String eventId) {
+	public void setEventId(Integer eventId) {
 		this.eventId = eventId;
 	}
 

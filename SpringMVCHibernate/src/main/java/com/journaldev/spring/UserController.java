@@ -1,7 +1,9 @@
 package com.journaldev.spring;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -85,14 +88,12 @@ public class UserController {
 	}
 	
     
+
 	@RequestMapping(value = UserRestURIConstants.REGISTER_USER, method = RequestMethod.POST)
-	public @ResponseBody User createUser(@PathVariable(value="eventId") String eventid, String inputData) throws JsonParseException, JsonMappingException, IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		User emp = mapper.readValue(inputData, User.class);
-		emp.setEventId(eventid);
-		addUser(emp);
-		return emp;
+	public @ResponseBody User createUser(@PathVariable(value="eventId") Integer eventid, @RequestBody User inputData) throws JsonParseException, JsonMappingException, IOException {
+		inputData.setEventId(eventid);
+		addUser(inputData);
+		return inputData;
 	}
-	
 	
 }

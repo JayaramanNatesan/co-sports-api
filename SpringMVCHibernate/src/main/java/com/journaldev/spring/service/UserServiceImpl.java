@@ -47,4 +47,10 @@ public class UserServiceImpl implements UserService {
 		this.userDAO.removeUser(id);
 	}
 
+	@Override
+	@Transactional
+	public List<User> listUsersByEventId(Integer eventId) {
+		return this.userDAO.listUsersByEventId(eventId);
+	}
+
 }

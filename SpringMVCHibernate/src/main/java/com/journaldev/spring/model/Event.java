@@ -36,7 +36,7 @@ public class Event implements Serializable {
 	private Date eventDate;
 	@Column(name = "max_participants")
 	private Long maximumParticipants;
-	@Column(name = "number_of_perticipants")
+	@Column(name = "number_of_participants")
 	private Long numberOfPaticipants;
 	@Column(name = "event_status")  
 	private String eventStatus;

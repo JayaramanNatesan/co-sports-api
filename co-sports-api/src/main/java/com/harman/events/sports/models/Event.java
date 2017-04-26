@@ -19,6 +19,10 @@ public class Event implements Serializable {
 	private String eventStatus;
 	private String registrationStatus;
 
+	public Event() {
+		
+	}
+	
 	public Event(Integer eventId, String eventName, String eventVenue, Date eventDate, Long maximumParticipants,
 			Long numberOfParticipants, String eventStatus, String registrationStatus) {
 		
@@ -72,12 +76,12 @@ public class Event implements Serializable {
 		this.maximumParticipants = maximumParticipants;
 	}
 
-	public Long getNumberOfPaticipants() {
+	public Long getNumberOfParticipants() {
 		return numberOfParticipants;
 	}
 
-	public void setNumberOfPaticipants(Long numberOfPaticipants) {
-		this.numberOfParticipants = numberOfPaticipants;
+	public void setNumberOfParticipants(Long numberOfParticipants) {
+		this.numberOfParticipants = numberOfParticipants;
 	}
 
 	public String getEventStatus() {

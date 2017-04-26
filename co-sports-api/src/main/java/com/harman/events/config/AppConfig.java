@@ -1,10 +1,11 @@
 package com.harman.events.config;
 
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
-@ComponentScan( { "com.harman.events" })
+@EnableAspectJAutoProxy
 public class AppConfig {
 
 }

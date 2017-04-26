@@ -50,8 +50,9 @@ public class LoggingAspect
     
     */
   
-    @Around("com.harman.aspects.SystemArchitecture.businessOperation()")
+    @Around("com.harman.events.aspects.SystemArchitecture.serviceOperation()")
     @Order(4)
+    //@Around("execution( * com.harman.events.sports.services.impl.EventServiceImpl.getAllEvents ())")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable
     {
         log.info("The method " + joinPoint.getSignature().getName()+ "() begins with " + Arrays.toString(joinPoint.getArgs()));
